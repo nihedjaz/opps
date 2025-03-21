@@ -1,9 +1,344 @@
-je vous envoie mon code jasper sur plusieur partie car il est tres lonng est apres je vous donne mon question donc attend de que je termine je vous donne mon question jevous envoiie la 2eme partie tt suite <detail> <band height="672" splitType="Stretch"> <textField> <reportElement x="390" y="7" width="104" height="13" uuid="9ebffb85-be74-46cc-8db3-9b35f6aa984c"/> <textFieldExpression><![CDATA[$F{sub_name}]]></textFieldExpression> </textField> <textField> <reportElement x="470" y="37" width="77" height="13" uuid="1ae384ef-d9f8-437a-92b5-453873500735"/> <textFieldExpression><![CDATA[$F{adr2}]]></textFieldExpression> </textField> <textField> <reportElement x="390" y="55" width="131" height="15" uuid="090159e4-2e52-4610-a3e1-27e6ce7042dd"/> <textFieldExpression><![CDATA[$F{ville}]]></textFieldExpression> </textField> <textField> <reportElement x="390" y="37" width="80" height="13" uuid="cc9f11de-baa9-457f-8dc0-6b4d3a2d3a01"/> <textFieldExpression><![CDATA[$F{adr1}]]></textFieldExpression> </textField> <textField> <reportElement x="390" y="24" width="104" height="13" uuid="1c497f4a-ffbf-4bb8-ac6d-071b685459c2"/> <textFieldExpression><![CDATA[$F{sub_name}]]></textFieldExpression> </textField> <staticText> <reportElement x="99" y="137" width="16" height="20" uuid="330b1385-0623-4564-8e62-20de1e6c6a74"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[au]]></text> </staticText> <textField> <reportElement x="100" y="187" width="160" height="20" uuid="67ffde46-2e92-477e-a2a9-6f9669c43388"/> <textFieldExpression><![CDATA[$F{rattach}]]></textFieldExpression> </textField> <textField> <reportElement x="79" y="108" width="100" height="20" uuid="9eef6abb-d3f8-4cb6-a9fe-1cb4abc5cbf5"/> <textFieldExpression><![CDATA[$F{sub_name}]]></textFieldExpression> </textField> <textField> <reportElement x="53" y="77" width="162" height="16" uuid="bceefba4-edaf-4286-95ac-fee3e4fc6857"/> <textFieldExpression><![CDATA[$F{ref}]]></textFieldExpression> </textField> <textField> <reportElement x="115" y="137" width="100" height="20" uuid="ebc6dea2-8973-4ffe-b26f-adc4b1fd375c"/> <textFieldExpression><![CDATA[$F{last_date}]]></textFieldExpression> </textField> <textField> <reportElement x="70" y="94" width="100" height="14" uuid="ea83cb72-ba89-4644-83ee-4a3ebb9dcdf7"/> <textFieldExpression><![CDATA[$F{pivot}]]></textFieldExpression> </textField> <staticText> <reportElement x="-10" y="137" width="57" height="20" uuid="2d57a27c-0f99-4b50-b9a8-34e66c471e42"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[Période du ]]></text> </staticText> <staticText> <reportElement x="-11" y="108" width="90" height="20" uuid="979a0b58-5618-4d85-b492-c0d44b3cec77"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[Nom de la société :]]></text> </staticText> <staticText> <reportElement x="-12" y="186" width="110" height="20" uuid="4f1a54e8-adf3-4eb7-aa6c-1094bf58f913"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[Entité de rattachement :]]></text> </staticText> <staticText> <reportElement x="-11" y="76" width="61" height="20" uuid="eb66282d-63b8-4171-8a2c-289f823de8fb"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[Référence :]]></text> </staticText> <staticText> <reportElement x="-10" y="167" width="39" height="20" uuid="1d3fe223-7e8c-4a0a-9fe0-ed70e60bc7eb"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[Devise :]]></text> </staticText> <staticText> <reportElement x="-12" y="91" width="81" height="20" uuid="f2051f0b-6774-495d-a616-e846b4af8a2f"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[Nom du groupe :]]></text> </staticText> <textField> <reportElement x="40" y="167" width="100" height="20" uuid="d0689d8d-e6dd-4e02-9d49-1bdc2b3b95c1"/> <textFieldExpression><![CDATA[$F{devise}]]></textFieldExpression> </textField> <textField> <reportElement x="44" y="137" width="57" height="20" uuid="e7d2d157-6c28-4f32-b7e3-18d3414ccb04"/> <textFieldExpression><![CDATA[$F{first_date}]]></textFieldExpression> </textField> <textField> <reportElement x="10" y="265" width="100" height="20" uuid="f52ab375-fcf8-4bd4-aab6-cf697776ac8c"/> <textFieldExpression><![CDATA[$F{last_date}]]></textFieldExpression> </textField> <line> <reportElement x="-10" y="250" width="575" height="1" uuid="cef95f69-fdb2-418b-91d5-768088b6c1a7"/> <graphicElement> <pen lineWidth="1.3"/> </graphicElement> </line> <staticText> <reportElement x="-10" y="267" width="18" height="17" uuid="aa9799ff-1695-43a1-8c55-e37d77b13b3e"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[au ]]></text> </staticText> <staticText> <reportElement x="-10" y="253" width="500" height="19" uuid="68326751-7abb-4fc4-afbd-7175323e3637"/> <textElement> <font fontName="Arial"/> </textElement> <text><![CDATA[Vous trouverez dans le tableau ci-dessous le détail des intérêts reçus ou payés par la société pour la période du ]]></text> </staticText> <staticText> <reportElement x="-10" y="228" width="350" height="30" uuid="2256e91d-b45e-4fca-80be-999ad036c6e7"/> <textElement> <font fontName="Arial" size="18" isBold="true"/> </textElement> <text><![CDATA[DÉTAIL DES INTÉRÊTS INTRA-GROUPE]]></text> </staticText> <textField> <reportElement x="490" y="252" width="57" height="20" uuid="d983c640-8672-4355-aac5-cd7de37a35a0"/> <textFieldExpression><![CDATA[$F{first_date}]]></textFieldExpression> </textField> <staticText> <reportElement x="280" y="290" width="160" height="40" uuid="3b1508d2-33d9-40bc-b18f-5cd28a057614"/> <box> <topPen lineWidth="1.2"/> <leftPen lineWidth="1.2"/> <bottomPen lineWidth="1.2"/> <rightPen lineWidth="1.2"/> </box> <text><![CDATA[]]></text> </staticText> <staticText> <reportElement x="-1" y="290" width="116" height="40" uuid="15abe375-d3df-4673-a522-793845b57261"/> <box> <topPen lineWidth="1.2"/> <leftPen lineWidth="1.2"/> <bottomPen lineWidth="1.2"/> <rightPen lineWidth="1.2"/> </box> <textElement textAlignment="Center" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[Nom de la société et N° de compte pour la comptabilisation des intérêts]]></text> </staticText> <staticText> <reportElement x="350" y="310" width="90" height="20" uuid="0cc0a1af-a374-4191-85e6-be552ca63b75"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[Montant]]></text> </staticText> <staticText> <reportElement x="181" y="290" width="99" height="40" uuid="d3865b73-bbe1-46b8-af90-acf9acc76603"/> <box> <topPen lineWidth="1.2"/> <leftPen lineWidth="1.2"/> <bottomPen lineWidth="1.2"/> <rightPen lineWidth="1.2"/> </box> <textElement textAlignment="Center" verticalAlignment="Middle"> <font size="11" isBold="true"/> </textElement> <text><![CDATA[Montant brut]]></text> </staticText>
-
-<staticText> <reportElement x="440" y="290" width="115" height="40" uuid="dbb8f91c-020d-41f6-b0c4-e0e15dfc1706"/> <box> <topPen lineWidth="1.2"/> <leftPen lineWidth="1.2"/> <bottomPen lineWidth="1.2"/> <rightPen lineWidth="1.2"/> </box> <textElement textAlignment="Center" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[Montant net]]></text> </staticText> <staticText> <reportElement x="115" y="290" width="66" height="40" uuid="6119cb7b-aea1-43e1-aa74-b8b0f6159ae2"/> <box> <topPen lineWidth="1.2"/> <leftPen lineWidth="1.2"/> <bottomPen lineWidth="1.2"/> <rightPen lineWidth="1.2"/> </box> <text><![CDATA[]]></text> </staticText> <staticText> <reportElement x="310" y="290" width="100" height="20" uuid="25cf3b03-8fef-444c-8634-108da556f67e"/> <textElement textAlignment="Center"> <font isBold="true"/> </textElement> <text><![CDATA[Retenue à la source]]></text> </staticText> <staticText> <reportElement x="280" y="310" width="69" height="20" uuid="1b81cb69-f94b-4b5d-a15b-007ab2807eb1"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[Taux]]></text> </staticText> <staticText> <reportElement x="115" y="330" width="66" height="40" uuid="72ef9ec0-bce7-4802-a700-f32a224a0d25"/> <box> <topPen lineWidth="1.1"/> <leftPen lineWidth="1.1"/> <bottomPen lineWidth="1.1"/> <rightPen lineWidth="1.1"/> </box> <textElement textAlignment="Center" verticalAlignment="Top"/> <text><![CDATA[Débit Crédit]]></text> </staticText> <textField> <reportElement x="190" y="350" width="80" height="20" uuid="36d90e41-b38f-46d7-8661-b0dff96d9ed4"/> <textElement textAlignment="Right"/> <textFieldExpression><![CDATA[$F{montant_n_c}]]></textFieldExpression> </textField> <textField> <reportElement x="190" y="330" width="80" height="20" uuid="2a7fb4a7-8d8c-4802-aca4-6dbff5a84023"/> <textElement textAlignment="Right"/> <textFieldExpression><![CDATA[$F{montant_b_d}]]></textFieldExpression> </textField> <staticText> <reportElement x="-1" y="330" width="116" height="64" uuid="5b591ed0-2f1f-4c37-83b5-d1e8dea5e8b7"/> <box> <topPen lineWidth="1.1"/> <leftPen lineWidth="1.1"/> <bottomPen lineWidth="1.1"/> <rightPen lineWidth="1.1"/> </box> <text><![CDATA[]]></text> </staticText> <textField> <reportElement x="7" y="340" width="100" height="20" uuid="3aaac55f-68de-4f20-a72f-36b1166ed631"/> <textFieldExpression><![CDATA[$F{sub_name}]]></textFieldExpression> </textField> <textField> <reportElement x="7" y="360" width="100" height="20" uuid="90c2a73f-f096-40cd-a9d3-a18392a50ac8"/> <textFieldExpression><![CDATA[$F{num_compte}]]></textFieldExpression> </textField> <staticText> <reportElement x="280" y="330" width="160" height="40" uuid="6b0449fa-63cc-435b-bdb1-cda9fdfa8af1"/> <box> <topPen lineWidth="1.1"/> <leftPen lineWidth="1.1"/> <bottomPen lineWidth="1.1"/> <rightPen lineWidth="1.1"/> </box> <text><![CDATA[]]></text> </staticText> <staticText> <reportElement x="440" y="330" width="115" height="40" uuid="67c15610-5e8d-473c-b866-4c111b8843ee"/> <box> <topPen lineWidth="1.0"/> <leftPen lineWidth="1.0"/> <bottomPen lineWidth="1.0"/> <rightPen lineWidth="1.0"/> </box> <text><![CDATA[]]></text> </staticText> <textField> <reportElement x="349" y="350" width="81" height="20" uuid="451cd20b-54bc-48a0-9b0c-a0ab95f4ffb2"/> <textElement textAlignment="Right"/> <textFieldExpression><![CDATA[$F{mon_rsa_c}]]></textFieldExpression> </textField> <textField> <reportElement stretchType="RelativeToTallestObject" x="289" y="330" width="31" height="20" uuid="0e7c9f7f-3a50-4f9a-b6cc-1429a9a0306b"/> <box> <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/> </box> <textFieldExpression><![CDATA[$F{taux}]]></textFieldExpression> </textField> <textField> <reportElement x="349" y="330" width="81" height="20" uuid="52ec98ea-1665-4975-8e91-9708a99a8723"/> <textElement textAlignment="Right"/> <textFieldExpression><![CDATA[$F{mon_rsa_d}]]></textFieldExpression> </textField> <staticText> <reportElement x="321" y="350" width="17" height="20" uuid="65437288-29d3-4937-8851-776d05e8bf29"/> <text><![CDATA[%]]></text> </staticText> <staticText> <reportElement x="320" y="330" width="17" height="20" uuid="b0195a63-c8c3-443e-81e6-5a295b004e54"/> <text><![CDATA[%]]></text> </staticText> <textField> <reportElement x="289" y="350" width="31" height="20" uuid="113c8c86-c05a-4475-8771-4617bfd7e7a8"/> <textFieldExpression><![CDATA[$F{taux}]]></textFieldExpression> </textField> <textField> <reportElement x="440" y="330" width="109" height="20" uuid="d0edf9eb-8556-4745-908a-a37f7badf812"/> <textElement textAlignment="Right"/> <textFieldExpression><![CDATA[$F{montant_n_d}]]></textFieldExpression> </textField> <textField> <reportElement x="440" y="350" width="107" height="20" uuid="890bea4e-8f47-482d-ba27-ac3bfa100dc3"/> <textElement textAlignment="Right"/> <textFieldExpression><![CDATA[$F{montant_n_c}]]></textFieldExpression> </textField> <staticText> <reportElement x="115" y="370" width="234" height="24" uuid="ce6a8d8a-3822-4e0c-8c6f-82eda0ec6200"/> <box> <topPen lineWidth="1.1"/> <leftPen lineWidth="1.1"/> <bottomPen lineWidth="1.1"/> <rightPen lineWidth="1.1"/> </box> <textElement verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[Montant à imputer au débit :]]></text> </staticText> <staticText> <reportElement x="349" y="370" width="206" height="24" uuid="22ee1c5e-4a7b-4b15-a9bf-4da239e95222"/> <box> <topPen lineWidth="1.1"/> <leftPen lineWidth="1.1"/> <bottomPen lineWidth="1.1"/> <rightPen lineWidth="1.1"/> </box> <textElement textAlignment="Left" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[Montant à imputer au crédit :]]></text> </staticText> <textField> <reportElement x="452" y="370" width="68" height="24" uuid="88be7d86-b68c-4244-bfec-6b7a8eec3af1"/> <textElement textAlignment="Right" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <textFieldExpression><![CDATA[$F{montant_in_c}]]></textFieldExpression> </textField> <staticText> <reportElement x="318" y="372" width="29" height="20" uuid="4362bd42-80cd-4a08-8087-c75b6b764080"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[MAD]]></text> </staticText> <textField> <reportElement x="237" y="372" width="80" height="20" uuid="8a291af2-68e5-4b18-ac57-06c694b9fa52"/> <textElement textAlignment="Right" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <textFieldExpression><![CDATA[$F{montant_in_d}]]></textFieldExpression> </textField> <staticText> <reportElement x="522" y="372" width="30" height="20" uuid="ba209b24-219c-447d-b32e-562ee1a8c7c0"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[MAD]]></text> </staticText> <componentElement> <reportElement positionType="Float" x="0" y="410" width="555" height="132" uuid="9f192f59-c0c3-4455-8ab1-2a7b490d11ef"> <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/> </reportElement> <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd"> <datasetRun subDataset="Dataset1" uuid="efb9b6cb-5ecc-4296-8bc7-a6016e738793"> <dataSourceExpression><![CDATA[$P{tableDataSource}]]></dataSourceExpression> </datasetRun> <jr:columnGroup width="240" uuid="bb878cba-baab-4338-9e4a-faf65d9d1960"> <jr:columnGroup width="150" uuid="9e7be607-ca44-47a1-9495-716c9d4f2f4a"> <jr:column width="60" uuid="80d1f66f-884e-4b3d-b7d1-6eac06013005"> <property name="Date de valeur" value="NEW_VALUE"/> <jr:tableHeader style="Table_TH" height="40"> <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/> <box> <topPen lineWidth="0.9"/> <leftPen lineWidth="0.9"/> <bottomPen lineWidth="0.9"/> <rightPen lineWidth="0.9"/> </box> <staticText> <reportElement x="0" y="0" width="60" height="40" uuid="b745a017-3db8-4ab1-b932-ab2bfd602e5c"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Date de valeur]]></text> </staticText> </jr:tableHeader> <jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:tableFooter> <jr:columnHeader style="Table_CH" height="30"> <box> <topPen lineWidth="0.9" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.9" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.9" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.9" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="1" y="0" width="59" height="30" uuid="8aa20d5b-357f-4d3b-9136-390d6b237e0a"/> <textElement textAlignment="Right" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Report ]]></text> </staticText> </jr:columnHeader> <jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="2" y="7" width="58" height="20" uuid="389df640-7964-43ee-86c7-2619113f347a"/> <textFieldExpression><![CDATA[$F{date_val}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> je vous envoie la 3eme partie svp attedez moi
-
-<jr:column width="90" uuid="a76bccbc-0558-4a56-87d7-9745d54d04f9"> <property name="capitaux" value="NEW_VALUE"/> <jr:tableHeader style="Table_TH" height="40"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="2" y="0" width="78" height="39" uuid="64ae264e-5838-41f8-aeb7-a18235ce4305"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Capitaux]]></text> </staticText> </jr:tableHeader> <jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="3" y="4" width="77" height="20" uuid="f152e65f-3d05-42ce-a3be-df7adff5242c"/> <textFieldExpression><![CDATA[$V{total_cap}]]></textFieldExpression> </textField> </jr:tableFooter> <jr:columnHeader style="Table_CH" height="30"> <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/> <box> <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="0" y="0" width="90" height="30" uuid="586d8c27-a491-42b1-8f03-26fd24b3a5c6"/> <textElement verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[solde précédent :]]></text> </staticText> </jr:columnHeader><jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="12" y="6" width="60" height="20" uuid="61bcdfa9-01d3-45af-baba-c25100faf1c2"/> <textFieldExpression><![CDATA[$F{capitaux}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> </jr:columnGroup> <jr:column width="90" uuid="00224a60-0419-43ca-b101-46ee1529b015"> <jr:tableHeader style="Table_TH" height="40"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="10" y="0" width="70" height="40" uuid="31d656ca-e20b-4da6-8458-63c78d236cfb"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Solde]]></text> </staticText> </jr:tableHeader> <jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:tableFooter> <jr:columnHeader style="Table_CH" height="30"> <box> <topPen lineWidth="0.9" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.9" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="0" y="0" width="90" height="30" uuid="ef48823d-450a-4888-a2d5-8fbce66d797d"/> <textElement textAlignment="Right" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <textFieldExpression><![CDATA[$F{ancien_solde}]]></textFieldExpression> </textField> </jr:columnHeader> <jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="1" y="6" width="79" height="20" uuid="d082327a-25b5-4868-aec5-09a5081b4a39"/> <textFieldExpression><![CDATA[$F{solde}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> </jr:columnGroup> <jr:column width="30" uuid="7d020a43-ef87-4b1a-a53d-73fab714390a"> <jr:tableHeader style="Table_TH" height="40"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="0" y="0" width="30" height="39" uuid="290e1e06-2f1f-4202-9ff7-f9728fd25066"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Jours]]></text> </staticText> </jr:tableHeader> <jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="4" y="6" width="24" height="20" uuid="5d8cf62b-a825-42d0-83ac-890a4f109ae8"/> <textFieldExpression><![CDATA[$V{total_jrs}]]></textFieldExpression> </textField> </jr:tableFooter> <jr:columnHeader style="Table_CH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:columnHeader><jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="4" y="8" width="24" height="20" uuid="008e105f-ee71-49fa-a2ea-1a8a4981b4ef"/> <textFieldExpression><![CDATA[$F{jour}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> <jr:column width="80" uuid="9cd3a34b-6311-4388-9817-40c9b2b9e2f7"> <jr:tableHeader style="Table_TH" height="40"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="10" y="1" width="56" height="39" uuid="84d566d2-dbcb-406d-aae4-bc9f40b708ad"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Nombres]]></text> </staticText> </jr:tableHeader> <jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="1" y="5" width="59" height="20" uuid="350d28cc-d713-48ad-af60-9df008f10641"/> <textFieldExpression><![CDATA[$V{total_numbrs}]]></textFieldExpression> </textField> </jr:tableFooter> <jr:columnHeader style="Table_CH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:columnHeader> <jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="4" y="8" width="71" height="20" uuid="054d48dc-8c79-4721-9320-a4f54f60ab2a"/> <textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> <jr:column width="50" uuid="ff788e99-aecf-4d25-ba52-6eb6e52eb828"> <jr:tableHeader style="Table_TH" height="40"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="0" y="0" width="50" height="40" uuid="aac8707c-318a-481f-ae27-1dc7dd28d247"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Taux débiteurs]]></text> je vous envoie la 4eme partie
-
-</staticText> </jr:tableHeader> <jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:tableFooter> <jr:columnHeader style="Table_CH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:columnHeader> <jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="5" y="9" width="42" height="20" uuid="3395752a-32fc-4aa1-b088-6c0b01b1c680"/> <textFieldExpression><![CDATA[$F{taux_debit}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> <jr:column width="50" uuid="c545911a-14c3-46ae-ad62-f46908a2f5b1"> <jr:tableHeader style="Table_TH" height="40"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="0" y="0" width="50" height="39" uuid="24048c1a-9fca-4a85-95eb-0733f934197f"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Taux créditeurs]]></text> </staticText> </jr:tableHeader> <jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:tableFooter> <jr:columnHeader style="Table_CH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:columnHeader> <jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="1" y="8" width="34" height="20" uuid="f9464b22-fce5-4d58-ac93-810a1bbdaa5f"/> <textFieldExpression><![CDATA[$F{taux_credit}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> <jr:column width="50" uuid="c20de9d7-6687-4f29-9e7a-0a573224e62e"> <jr:tableHeader style="Table_TH" height="40"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="0" y="0" width="50" height="39" uuid="6dcf2935-1a49-4f33-9f7b-9bf712a779b1"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Intérêts débiteurs]]></text> </staticText> </jr:tableHeader> <jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="6" y="5" width="40" height="20" uuid="b35b1aec-136b-4f62-a016-17a95d93e74e"/> <textFieldExpression><![CDATA[$V{total_id}]]></textFieldExpression> </textField> </jr:tableFooter><jr:columnHeader style="Table_CH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:columnHeader> <jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="1" y="9" width="49" height="20" uuid="2a61a2a9-0027-49bc-a94b-adf79809f4ef"/> <textFieldExpression><![CDATA[$F{interet_debit}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> <jr:column width="55" uuid="c731588e-95ce-4349-a60f-cb366fede3a4"> <jr:tableHeader style="Table_TH" height="40"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <staticText> <reportElement x="0" y="0" width="50" height="40" uuid="41463318-ebed-4301-a024-291b2d069675"/> <textElement textAlignment="Center" verticalAlignment="Middle"> <font fontName="Arial" isBold="true"/> </textElement> <text><![CDATA[Intérêts créditeurs]]></text> </staticText><jr:tableFooter style="Table_TH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="11" y="5" width="30" height="20" uuid="8f166acb-59e7-41f3-8f0d-9283a02e3497"/> <textFieldExpression><![CDATA[$V{total_ic}]]></textFieldExpression> </textField> </jr:tableFooter> <jr:columnHeader style="Table_CH" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> </jr:columnHeader> je vous envoie la derniere partie tt suite attedez moie
-
-<jr:detailCell style="Table_TD" height="30"> <box> <topPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#000000"/> </box> <textField> <reportElement x="0" y="10" width="50" height="20" uuid="e8f60ee6-f735-4d2d-a607-9fdddb3d7f0a"/> <textFieldExpression><![CDATA[$F{interet_credit}]]></textFieldExpression> </textField> </jr:detailCell> </jr:column> </jr:table> </componentElement> <textField> <reportElement x="289" y="596" width="258" height="13" uuid="803c0225-a9b0-4da0-bafe-56261eec74f7"/> <textElement verticalAlignment="Middle"/> <textFieldExpression><![CDATA[$F{soc_name}]]></textFieldExpression> </textField> <staticText> <reportElement x="-1" y="574" width="281" height="20" uuid="65b4ae2c-bc98-45d4-b4bd-985221916bd8"/> <box> <topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> </box> <textElement verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[Compte]]></text> </staticText> <staticText> <reportElement x="-1" y="559" width="555" height="15" uuid="a17e7cec-61a2-4583-bc58-9c8c4ae11c94"/> <box> <topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> </box> <textElement textAlignment="Center" verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[LISTE DES COMPTES INCLUS DANS L'ARRETE]]></text> </staticText> <textField> <reportElement x="0" y="596" width="181" height="16" uuid="476d6a93-f063-4eed-a9dd-815953ff4589"/> <textElement verticalAlignment="Middle"/> <textFieldExpression><![CDATA[$F{num_compte}]]></textFieldExpression> </textField> <staticText> <reportElement x="280" y="574" width="274" height="20" uuid="f1b064e2-fae2-43ee-9c4b-1b843e22d4ac"/> <box> <topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> </box> <textElement verticalAlignment="Middle"> <font isBold="true"/> </textElement> <text><![CDATA[Agence]]></text> </staticText> <staticText> <reportElement x="-1" y="594" width="555" height="20" uuid="3aefa076-bde5-49ee-a0b6-b0a032785b32"/> <box> <topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> <rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/> </box> <text><![CDATA[]]></text> </staticText> <staticText> <reportElement x="1" y="626" width="548" height="43" uuid="7848b3c1-5f48-43da-ad21-6d444858dd58"/> <textElement> <font fontName="Arial" size="7"/> </textElement> <text><![CDATA[Position du compte : + signifie que le compte est créditeur par rapport à la société centralisatrice; - signifie que le compte est débiteur par rapport à la société centralisatrice. Les soldes ci-dessus comprennent les nivellements propres au présent service et, le cas échéant, les prêts/emprunts antérieurs à celui-ci et éventuellement toute modification ultérieure, communiqués à la banque par le pivot de trésorerie.]]></text> </staticText> </band> </detail> <pageFooter> <band height="40" splitType="Stretch"><staticText> <reportElement x="-16" y="21" width="486" height="19" uuid="f5a77921-bcbd-4989-a0b1-17ef7c8e8059"/> <textElement textAlignment="Center"> <font fontName="Arial" size="7"/> </textElement> <text><![CDATA[SOCIETE GENERALE SA AU CAPITAL DE 1 066 714 367,50 EUR. SIEGE SOCIAL A PARIS, 29 BD HAUSMANN - 552.120.222 R.C.S. PARIS.]]></text> </staticText></band> </pageFooter> </jasperReport> voila la tous les partie detail de rapport jasper maintent mon probelme ces que le table (jr:table) nest saffiche pas correctement la premier probleme ce que le 5 premier ligne nest sont pas afficher il affiche de la 6eme ligne et les autres element doivent etre afficher en bas de table mais (cest sont afficher avant le table)je veux une solution en urgence mon rapport nest pas organiser je veux les element qui sont en haut rest en haut et le element qui sont en bas de table reste en bas mercie de concentre avec le code et de me donne une solution complet et concret qui resoudre mon probleme
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Arrêtés-intra-groupe" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b052309-5517-4ffe-bf31-5e7ea5240878">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="adr1" class="java.lang.String"/>
+	<field name="adr2" class="java.lang.String"/>
+	<field name="adr3" class="java.lang.String"/>
+	<field name="ref" class="java.lang.String"/>
+	<field name="rattach" class="java.lang.String"/>
+	<field name="sub_name" class="java.lang.String"/>
+	<field name="pivot" class="java.lang.String"/>
+	<field name="first_date" class="sun.util.resources.LocaleData"/>
+	<field name="last_date" class="sun.util.resources.LocaleData"/>
+	<field name="devise" class="java.lang.String"/>
+	<field name="num_compte" class="java.lang.String"/>
+	<field name="total_pivot_debit" class="java.math.BigDecimal"/>
+	<field name="total_pivot_credit" class="java.math.BigDecimal"/>
+	<pageHeader>
+		<band height="86" splitType="Stretch">
+			<line>
+				<reportElement x="-11" y="45" width="572" height="1" uuid="1f1e5445-5263-4944-bdaf-ba8565d59bb4"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="212" y="18" width="350" height="29" forecolor="#000000" uuid="e2cebf24-75b5-429b-a546-20ccce80e7b8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Serif" size="16"/>
+				</textElement>
+				<text><![CDATA[ÉTAT DES INTÉRÊTS INTRA-GROUPE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="40" y="-6" width="40" height="40" uuid="18d82036-0529-4760-a2bd-12cfe188530a"/>
+				<imageExpression><![CDATA["C:\\Users\\JAZZARN\\Downloads\\societeGeneral.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-15" y="-5" width="49" height="38" uuid="061fb447-960f-4763-9cf1-038fb48e6a67"/>
+				<textElement>
+					<font fontName="Serif" size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="-15" width="355" height="40" uuid="cb04004d-e714-4875-b718-b0239352b48d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif" size="18" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[SOGECASH INTERNATIONAL POOLING ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-11" y="49" width="81" height="18" forecolor="#000000" uuid="385f5a30-09ef-46b4-8303-dd9fd0a88010"/>
+				<textElement>
+					<font fontName="Serif" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PAYS : MAROC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-11" y="65" width="111" height="17" uuid="88a5eabe-8fdb-4e7f-ba81-47b0b5b496c3"/>
+				<textElement>
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<text><![CDATA[VILLE : CASABLANCA]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="630" splitType="Stretch">
+			<textField>
+				<reportElement x="391" y="57" width="131" height="22" uuid="ae9551e4-5912-48af-8734-4d4bd6cb2483"/>
+				<textFieldExpression><![CDATA[$F{adr3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-10" y="170" width="39" height="20" uuid="f99890f2-7b23-4325-9beb-7c297bf97807"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Devise :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="44" y="140" width="57" height="20" uuid="6e749dc9-6ac3-41fb-abe5-4d6ac69f96c5"/>
+				<textFieldExpression><![CDATA[$F{first_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-11" y="79" width="61" height="20" uuid="fe76598a-db9b-4a45-95ba-d3e5d3fb662e"/>
+				<textElement>
+					<font fontName="Serif"/>
+				</textElement>
+				<text><![CDATA[Référence :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="140" width="57" height="20" uuid="4f770ee9-0537-4caa-8c69-52b153f12056"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Période du ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="140" width="16" height="20" uuid="4a163406-449c-4fa2-973a-3aea8624a640"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[au]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="37" width="77" height="20" uuid="cea35f39-3355-4186-afcc-86147f1ee643"/>
+				<textFieldExpression><![CDATA[$F{adr2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="37" width="80" height="20" uuid="e1b14707-6677-468a-8aec-abfe3a3d348e"/>
+				<textFieldExpression><![CDATA[$F{adr1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="97" width="100" height="14" uuid="9d69134d-075b-4474-982b-1586d0c5bbf2"/>
+				<textFieldExpression><![CDATA[$F{pivot}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-12" y="94" width="81" height="20" uuid="2a70b3ee-f21d-4cee-b68a-8861390b54a1"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Nom du groupe :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="79" y="111" width="100" height="20" uuid="12b1e6ce-4f54-4284-a48a-80afb7e051af"/>
+				<textFieldExpression><![CDATA[$F{pivot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="80" width="162" height="16" uuid="bf6dbfca-2890-41a0-9a44-adde1f46cdd0"/>
+				<textFieldExpression><![CDATA[$F{ref}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-11" y="111" width="90" height="20" uuid="c6fcc6ac-e92d-474b-975e-31bf8e30bd54"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Nom de la société :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="170" width="100" height="20" uuid="b13d6396-00af-4471-a3c1-0d34617cfb5e"/>
+				<textFieldExpression><![CDATA[$F{devise}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="24" width="104" height="13" uuid="fc3b3da0-8372-46db-aba3-bc93391e4c90"/>
+				<textFieldExpression><![CDATA[$F{sub_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="7" width="104" height="13" uuid="478883c6-86a8-44f5-81b3-80ef5390b892"/>
+				<textFieldExpression><![CDATA[$F{sub_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="140" width="100" height="20" uuid="ab6f3314-5282-4f51-8fa6-bd96582a8884"/>
+				<textFieldExpression><![CDATA[$F{last_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="238" width="100" height="20" uuid="f88f716c-b35b-47c6-9e5e-220ccdeb0ff1"/>
+				<textFieldExpression><![CDATA[$F{last_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="225" width="57" height="20" uuid="6c6130c0-0acb-4a75-9ae6-bcdeb42a1a93"/>
+				<textFieldExpression><![CDATA[$F{first_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-10" y="201" width="504" height="30" uuid="4d950bb5-a123-4871-84b3-2b768f4fa7a7"/>
+				<textElement>
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RÉCAPITULATIF DES INTÉRÊTS INTRA-GROUPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="240" width="18" height="17" uuid="036baa40-a335-4f8b-879d-7051d65e88ee"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[au ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="226" width="520" height="19" uuid="05b9c21f-a6df-448f-8769-62fffb30a5cb"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Vous trouverez dans le tableau ci-dessous le montant des intérêts reçus ou payés par la société pour la période du ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-10" y="223" width="575" height="1" uuid="08de203f-08a8-4937-a0d4-682e0f9adefc"/>
+				<graphicElement>
+					<pen lineWidth="1.3"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="-10" y="268" width="180" height="30" uuid="eef27b8f-6a2b-49f5-b0e5-1cbf0e277ff2"/>
+				<box>
+					<topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nom de la société et N° de compte
+pour la comptabilisation des intérêts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="298" width="180" height="35" uuid="df01319d-2186-4ecd-bd57-82d30f517831"/>
+				<box>
+					<topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="268" width="385" height="30" uuid="21db64ac-e373-47f9-a0ac-d2490d58d420"/>
+				<box>
+					<topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Intérêts nets reçus ou payés par la société]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="298" width="70" height="35" uuid="6bfaae99-17b7-4d07-9a5b-e8d7bbaa9277"/>
+				<box>
+					<topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif"/>
+				</textElement>
+				<text><![CDATA[Débit
+Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="298" width="315" height="35" uuid="195c3b60-23ef-4377-9879-c10d3cdb86ad"/>
+				<box>
+					<topPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.1" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="300" width="160" height="14" uuid="306f681e-033a-4d86-9569-c3825e06b751"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pivot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="314" width="160" height="17" uuid="482d6188-ec42-4379-97e9-6388b1cda17d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="300" width="156" height="14" uuid="d9c304b1-9061-4807-bb3b-cc52ae984678"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_pivot_debit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="317" width="157" height="14" uuid="35524469-769c-4660-9277-3e6dbf432c86"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_pivot_credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="355" width="100" height="20" uuid="f3ffa45f-6f0c-418b-9a6d-03d86339ebcd"/>
+				<textFieldExpression><![CDATA[$F{last_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="57" y="356" width="18" height="17" uuid="ca627289-def8-4ef2-a13d-875a89b11685"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[au ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-9" y="355" width="57" height="20" uuid="5fcb2779-b2bf-4a32-bc62-f476421c0c4b"/>
+				<textFieldExpression><![CDATA[$F{first_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-5" y="343" width="570" height="19" uuid="aec2ed44-b1b3-4bbe-85a9-4ad3a5877f18"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Vous trouverez dans le tableau ci-dessous le montant des intérêts reçus ou payés par les entités nivelées pour la période du]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="549" height="15" uuid="fae483a0-1a41-4b43-95ef-ef20502f9848"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Ce relevé vous est communiqué à titre indicatif. Pour toute information complémentaire, veuillez vous adresser à vos contacts habituels.]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="528" y="24" width="40" height="14" uuid="ab1acabc-43df-4ebc-95be-5b911f3289bf"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-16" y="24" width="486" height="14" uuid="85d958e1-1364-4030-a287-0724ca557649"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[SOCIETE GENERALE SA AU CAPITAL DE 1 066 714 367,50 EUR. SIEGE SOCIAL A PARIS, 29 BD HAUSMANN - 552.120.222 R.C.S. PARIS.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-11" y="20" width="572" height="1" uuid="675fb861-83d7-418a-904a-1c642a9f325e"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="480" y="24" width="48" height="14" uuid="c19b3836-79c7-49c3-aa0d-bf52351efa2b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
