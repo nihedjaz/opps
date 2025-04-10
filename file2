@@ -1,58 +1,26 @@
-<input
-  nbInput
+<nb-select
   placeholder="Sélectionner un mois"
-  [nbDatepicker]="monthPicker"
+  [(selected)]="selectedMonth"
   fullWidth
-  id="month"
-  type="text"
-  name="month"
-  [value]="selectedMonth"
-  (click)="openMonthPicker()"
-  readonly
-/>
-
-<nb-datepicker
-  #monthPicker
-  [startView]="'month'"
-  [viewMode]="'month'"
-  [min]="minMonth"
-  [max]="maxMonth"
-  [filter]="monthFilter"
-  (monthChange)="onMonthSelect($event)"
 >
-</nb-datepicker>
-
+  <nb-option *ngFor="let month of availableMonths" [value]="month">
+    {{ month.label }}
+  </nb-option>
+</nb-select>
 
 selectedMonth: string = '';
 
-// Définir la plage des mois sélectionnables (3 mois avant + mois actuel)
-minMonth = new Date(new Date().getFullYear(), new Date().getMonth() - 3, 1);
-maxMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+availableMonths = this.getLastThreeMonths();
 
-// Filtrer uniquement les mois autorisés
-monthFilter = (date: Date) => {
-  const selectedMonth = new Date(date.getFullYear(), date.getMonth(), 1);
-  return selectedMonth >= this.minMonth && selectedMonth <= this.maxMonth;
-};
+getLastThreeMonths(): { label: string, value: string }[] {
+  const months: { label: string, value: string }[] = [];
+  const now = new Date();
 
-// Ouvre manuellement le datepicker
-openMonthPicker() {
-  const input = document.getElementById('month');
-  input?.blur(); // Pour forcer la fermeture précédente
-  setTimeout(() => input?.click(), 0); // Relancer après fermeture
-}
-
-// Gère la sélection du mois
-onMonthSelect(date: Date) {
-  if (date instanceof Date) {
-    const month = date.toLocaleString('fr-FR', { month: 'long' });
-    const year = date.getFullYear();
-    this.selectedMonth = `${month} ${year}`;
-
-    // Fermer le datepicker en simulant blur
-    setTimeout(() => {
-      const input = document.getElementById('month');
-      input?.blur();
-    }, 200);
+  for (let i = 3; i >= 0; i--) {
+    const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const label = date.toLocaleString('fr-FR', { month: 'long', year: 'numeric' });
+    months.push({ label, value: label });
   }
+
+  return months;
 }
