@@ -1,26 +1,10 @@
-<nb-select
-  placeholder="Sélectionner un mois"
-  [(selected)]="selectedMonth"
-  fullWidth
->
-  <nb-option *ngFor="let month of availableMonths" [value]="month">
-    {{ month.label }}
-  </nb-option>
-</nb-select>
-
-selectedMonth: string = '';
-
-availableMonths = this.getLastThreeMonths();
-
-getLastThreeMonths(): { label: string, value: string }[] {
-  const months: { label: string, value: string }[] = [];
-  const now = new Date();
-
-  for (let i = 3; i >= 0; i--) {
-    const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
-    const label = date.toLocaleString('fr-FR', { month: 'long', year: 'numeric' });
-    months.push({ label, value: label });
-  }
-
-  return months;
-}
+je veux api je envoie des param (groupNum ,groupName de table client et name de table Subsidiary, id de etat mois de letat ou date detat )
+idEtat =1 si generateAccountInterestReport, idEtat=2 si
+generateArretelntraGroupeReport idEtat=3 si
+generateCumulativeLevelingsReport idEtat=4 si
+generateCumulativeLevelingsGroupReport idEtat=5 si
+generateLoanBorrowing Report idEtat=6 si
+generateLoanBorrowingGroupReport
+pour letat 1,2,,3et 4 je besoin le mois et pour le autre jai besoin de date pas de mois
+voila le foction qui generere les etat
+je veux une api qui regroupe tous les api deja exitant et qui genere letat demander quand je clique sur recherche voila mmon code deja exitant je vous envoie sur des parties jevous demande de mattender jusqua je termine tous les partie et apres me generer la reponse
