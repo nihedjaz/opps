@@ -1,10 +1,127 @@
-je veux api je envoie des param (groupNum ,groupName de table client et name de table Subsidiary, id de etat mois de letat ou date detat )
-idEtat =1 si generateAccountInterestReport, idEtat=2 si
-generateArretelntraGroupeReport idEtat=3 si
-generateCumulativeLevelingsReport idEtat=4 si
-generateCumulativeLevelingsGroupReport idEtat=5 si
-generateLoanBorrowing Report idEtat=6 si
-generateLoanBorrowingGroupReport
-pour letat 1,2,,3et 4 je besoin le mois et pour le autre jai besoin de date pas de mois
-voila le foction qui generere les etat
-je veux une api qui regroupe tous les api deja exitant et qui genere letat demander quand je clique sur recherche voila mmon code deja exitant je vous envoie sur des parties jevous demande de mattender jusqua je termine tous les partie et apres me generer la reponse
+Erreur lors de la génération du fichier PDF : [500] during [GET] to [http://localhost:8085/cash/api/subsidiaries/EMAPHOS] [SubsidiaryServiceProxy#findByName(String)]: [An unexpected error occurred: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "EMAPHOS"]
+feign.FeignException$InternalServerError: [500] during [GET] to [http://localhost:8085/cash/api/subsidiaries/EMAPHOS] [SubsidiaryServiceProxy#findByName(String)]: [An unexpected error occurred: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "EMAPHOS"]
+	at feign.FeignException.serverErrorStatus(FeignException.java:250)
+import java.util.List;
+
+@FeignClient(name = "subsidiaryService", url = "${subsidiary.service.url}")
+interface SubsidiaryServiceProxy {
+    @GetMapping("/client/{clientId}")
+    List<SubsidiaryDTO> getSubsidiariesByClientId(@PathVariable Long clientId);
+
+    @GetMapping("/{subsidiaryId}")
+    SubsidiaryDTO getSubsidiaryById(@PathVariable Long subsidiaryId);
+
+    @GetMapping("/{subsidiaryName}")
+    SubsidiaryDTO findByName(@PathVariable String subsidiaryName);
+
+}
+
+@Service
+public class SubsidiaryServiceFeign {
+    private final SubsidiaryServiceProxy subsidiaryServiceProxy;
+
+    @Autowired
+    public SubsidiaryServiceFeign(SubsidiaryServiceProxy subsidiaryServiceProxy) {
+        this.subsidiaryServiceProxy = subsidiaryServiceProxy;
+    }
+
+    public List<SubsidiaryDTO> getSubsidiariesByClientId(Long clientId) {
+        return this.subsidiaryServiceProxy.getSubsidiariesByClientId(clientId);
+    }
+
+    public SubsidiaryDTO getSubsidiaryById(Long subsidiaryId) {
+        return this.subsidiaryServiceProxy.getSubsidiaryById(subsidiaryId);
+
+    }
+    public SubsidiaryDTO getSubsidiaryByName( String subsidiaryName) {
+        return this.subsidiaryServiceProxy.findByName(subsidiaryName);
+    }
+@Override
+    public ResponseEntity<InputStreamResource> generateCumulativeLevelingsReport(GlobalReportRequest request) {
+        try {
+            YearMonth period=request.getMonth();
+            Long clientId = clientServiceFeign.getClientByGroupNum(request.getGroupNum()).getId();
+            SubsidiaryDTO subsidiary= subsidiaryServiceFeign.getSubsidiaryByName(request.getSubsidiaryName());
+
+            CumulativeLevelingsReport report = cumulativeLevelingsServiceImpl.calculateMonthlyCumulativeLevelingsReport(clientId, subsidiary.getId(), period);
+            List<CumulativeLevelingsReport> cumulativeReport = new ArrayList<>();
+            List<AccountCumulativeLevelingDetails> cumulatives = new ArrayList<>();
+            final String[] companyName = {""};
+            report.getAccountDetails()
+                    .forEach((s, accountCumulativeDetails) -> {
+                        if (accountCumulativeDetails != null) {
+                            AccountCumulativeLevelingDetails cumilative = new AccountCumulativeLevelingDetails();
+                            cumilative.setCumulativeLevelingDebit(accountCumulativeDetails.getCumulativeLevelingDebit());
+                            cumilative.setCumulativeLevelingCredit(accountCumulativeDetails.getCumulativeLevelingCredit());
+                            cumilative.setCumulativeLevelingNet(accountCumulativeDetails.getCumulativeLevelingNet());
+                            cumilative.setLastCumulativeLevelingDebit(accountCumulativeDetails.getLastCumulativeLevelingDebit());
+                            cumilative.setLastCumulativeLevelingCredit(accountCumulativeDetails.getLastCumulativeLevelingCredit());
+                            cumilative.setLastCumulativeLevelingNet(accountCumulativeDetails.getLastCumulativeLevelingNet());
+                            cumilative.setCompanyName(accountCumulativeDetails.getCompanyName());
+                            cumilative.setAccountNumber(accountCumulativeDetails.getAccountNumber());
+                            companyName[0] =cumilative.getCompanyName();
+                            if(accountCumulativeDetails.getCumulativeLevelingDebit().add(accountCumulativeDetails.getCumulativeLevelingCredit()).compareTo(BigDecimal.ZERO)!=0)
+                                cumulatives.add(cumilative);
+                        }
+                    });
+            Map<String, AccountCumulativeLevelingDetails> cumulativeMap = cumulatives.stream()
+                    .collect(Collectors.toMap(
+                            AccountCumulativeLevelingDetails::getAccountNumber,
+                            account -> account,
+                            (existing, replacement) -> existing
+                    ));
+            cumulativeReport.add(new CumulativeLevelingsReport(report.getCurrency(), report.getGroupName(), "02992 - 21807 - 04488 - NCU - IS", "",report.getPivotAddress(),report.getPivotAccountNumber(),report.getFirstDate(),report.getLastDate(),companyName[0],null,null,null,null,null,null,null, cumulativeMap));
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(cumulativeReport);
+            JRBeanCollectionDataSource subReportDataSource = new JRBeanCollectionDataSource(cumulatives);
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("tableDataSource", subReportDataSource);
+            parameters.put("pivotAddress", cumulativeReport.get(0)
+                    .getPivotAddress());
+            parameters.put("reportReference", cumulativeReport.get(0)
+                    .getReportReference());
+            parameters.put("groupName", cumulativeReport.get(0)
+                    .getGroupName());
+            parameters.put("pivotAccountNumber", cumulativeReport.get(0)
+                    .getPivotAccountNumber());
+            parameters.put("companyName", cumulativeReport.get(0)
+                    .getCompanyName());
+            parameters.put("firstDate", cumulativeReport.get(0)
+                    .getFirstDate());
+            parameters.put("lastDate", cumulativeReport.get(0)
+                    .getLastDate());
+            parameters.put("devise", cumulativeReport.get(0)
+                    .getCurrency());
+
+            InputStream jasperStream = this.getClass()
+                    .getResourceAsStream("/CumulativeLevelings.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+            File outputDir = new File("engine-service/src/main/resources/reports");
+            if (!outputDir.exists()) {
+                boolean created = outputDir.mkdirs();
+                System.out.println("Répertoire créé : " + created);
+            }
+
+
+            String outputFilePath = "engine-service/src/main/resources/reports/EtatCumuleIndiv.pdf";
+            JasperExportManager.exportReportToPdfFile(jasperPrint, outputFilePath);
+            System.out.println("Fichier PDF généré avec succès : " + outputFilePath);
+
+            ByteArrayOutputStream pdfOutputStream = new ByteArrayOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, pdfOutputStream);
+            ByteArrayInputStream bis = new ByteArrayInputStream(pdfOutputStream.toByteArray());
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Disposition", "inline; filename=cumule-indiv-report.pdf");
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .body(new InputStreamResource(bis));
+
+        } catch (Exception e) {
+            System.err.println("Erreur lors de la génération du fichier PDF : " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(500).build();
+        }
+    }
