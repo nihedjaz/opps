@@ -1,43 +1,13 @@
-@ExtendWith(MockitoExtension.class)
-class ReportServiceTest {
-
-    @InjectMocks
-    private ReportServiceImpl reportService; // à remplacer par ton service réel
-
-    @Mock
-    private InterestCalculationServiceImpl interestCalculationServiceImpl;
-
-    @Mock
-    private CumulativeLevelingsServiceImpl cumulativeLevelingsServiceImpl;
-
-    @Mock
-    private SubsidiaryServiceFeign subsidiaryServiceFeign;
-
-    @BeforeEach
-    void setUp() {
-        // Initialisation si nécessaire
-    }
-
-    private GlobalReportRequest createRequest() {
-        GlobalReportRequest request = new GlobalReportRequest();
-        request.setMonth(YearMonth.of(2024, 12));
-        request.setClientName("TestClient");
-        request.setSubsidiaryName("TestSubsidiary");
-        return request;
-    }
-
-
-*****************
-
-
 @Test
 void testGenerateArreteIntraGroupeReport() throws Exception {
     GlobalReportRequest request = createRequest();
 
     SubsidiaryDTO sub = new SubsidiaryDTO();
     sub.setId(1L);
-
-    when(subsidiaryServiceFeign.getSubsidiariesByClientId(anyLong())).thenReturn(List.of(sub));
+    
+    List<SubsidiaryDTO> subsidiaries = new ArrayList<>();
+    subsidiaries.add(sub);
+    when(subsidiaryServiceFeign.getSubsidiariesByClientId(anyLong())).thenReturn(subsidiaries);
 
     InterestReport interestReport = new InterestReport();
     interestReport.setCurrency("EUR");
@@ -58,97 +28,14 @@ void testGenerateArreteIntraGroupeReport() throws Exception {
     accountDetails.setRetainedDebitAmount(BigDecimal.ZERO);
     accountDetails.setWithholdingTax(BigDecimal.ZERO);
 
-    interestReport.setAccountDetails(Map.of("001", accountDetails));
+    Map<String, AccountInterestDetails> detailsMap = new HashMap<>();
+    detailsMap.put("001", accountDetails);
+    interestReport.setAccountDetails(detailsMap);
 
     when(interestCalculationServiceImpl.calculateMonthlyInterestReport(anyLong(), anyLong(), any()))
         .thenReturn(interestReport);
 
     ResponseEntity<?> response = reportService.generateArreteIntraGroupeReport(request);
-
-    assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertTrue(response.getBody() instanceof InputStreamResource);
-}
-
-
-
-****************
-
-
-@Test
-void testGenerateCumulativeLevelingsReport() throws Exception {
-    GlobalReportRequest request = createRequest();
-
-    SubsidiaryDTO sub = new SubsidiaryDTO();
-    sub.setId(1L);
-    when(subsidiaryServiceFeign.getSubsidiaryByName(any())).thenReturn(sub);
-
-    CumulativeLevelingsReport report = new CumulativeLevelingsReport();
-    report.setCurrency("EUR");
-    report.setGroupName("GroupX");
-    report.setPivotAddress("PivotAddr");
-    report.setPivotAccountNumber("PIVOT-ACC");
-    report.setFirstDate(LocalDate.of(2024, 12, 1));
-    report.setLastDate(LocalDate.of(2024, 12, 31));
-
-    AccountCumulativeLevelingDetails details = new AccountCumulativeLevelingDetails();
-    details.setAccountNumber("001");
-    details.setCompanyName("Company A");
-    details.setCumulativeLevelingCredit(BigDecimal.TEN);
-    details.setCumulativeLevelingDebit(BigDecimal.TEN);
-    details.setCumulativeLevelingNet(BigDecimal.ZERO);
-    details.setLastCumulativeLevelingCredit(BigDecimal.ONE);
-    details.setLastCumulativeLevelingDebit(BigDecimal.ONE);
-    details.setLastCumulativeLevelingNet(BigDecimal.ZERO);
-
-    report.setAccountDetails(Map.of("001", details));
-
-    when(cumulativeLevelingsServiceImpl.calculateMonthlyCumulativeLevelingsReport(anyLong(), anyLong(), any()))
-        .thenReturn(report);
-
-    ResponseEntity<?> response = reportService.generateCumulativeLevelingsReport(request);
-
-    assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertTrue(response.getBody() instanceof InputStreamResource);
-}
-
-
-
-
-***********
-@Test
-void testGenerateCumulativeLevelingsGroupReport() throws Exception {
-    GlobalReportRequest request = createRequest();
-
-    SubsidiaryDTO sub = new SubsidiaryDTO();
-    sub.setId(1L);
-    when(subsidiaryServiceFeign.getSubsidiariesByClientId(anyLong())).thenReturn(List.of(sub));
-
-    CumulativeLevelingsReport report = new CumulativeLevelingsReport();
-    report.setCurrency("EUR");
-    report.setGroupName("GroupGlobal");
-    report.setPivotAddress("Address");
-    report.setCompanyName("CompanyGroup");
-    report.setReportReference("REF-GRP");
-    report.setPivotAccountNumber("ACC-GRP");
-    report.setFirstDate(LocalDate.of(2024, 12, 1));
-    report.setLastDate(LocalDate.of(2024, 12, 31));
-
-    AccountCumulativeLevelingDetails details = new AccountCumulativeLevelingDetails();
-    details.setAccountNumber("001");
-    details.setCompanyName("Company A");
-    details.setCumulativeLevelingCredit(BigDecimal.TEN);
-    details.setCumulativeLevelingDebit(BigDecimal.TEN);
-    details.setCumulativeLevelingNet(BigDecimal.ZERO);
-    details.setLastCumulativeLevelingCredit(BigDecimal.ONE);
-    details.setLastCumulativeLevelingDebit(BigDecimal.ONE);
-    details.setLastCumulativeLevelingNet(BigDecimal.ZERO);
-
-    report.setAccountDetails(Map.of("001", details));
-
-    when(cumulativeLevelingsServiceImpl.calculateMonthlyCumulativeLevelingsReport(anyLong(), anyLong(), any()))
-        .thenReturn(report);
-
-    ResponseEntity<?> response = reportService.generateCumulativeLevelingsGroupReport(request);
 
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertTrue(response.getBody() instanceof InputStreamResource);
