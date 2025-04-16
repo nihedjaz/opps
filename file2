@@ -1,7 +1,60 @@
-java.lang.IllegalArgumentException: Could not find field 'reportPath' of type [null] on target object [com.sgma.cashpool.engineservice.service.impl.StatesServiceImpl@60df60da] or target class [class com.sgma.cashpool.engineservice.service.impl.StatesServiceImpl]
+@RunWith(MockitoJUnitRunner.class)
+class StatesServiceImplTest {
 
-	at org.springframework.test.util.ReflectionTestUtils.setField(ReflectionTestUtils.java:190)
-	at org.springframework.test.util.ReflectionTestUtils.setField(ReflectionTestUtils.java:107)
-	at org.springframework.test.util.ReflectionTestUtils.setField(ReflectionTestUtils.java:91)
-	at com.sgma.cashpool.engineservice.service.impl.StatesServiceImplTest.setUp(StatesServiceImplTest.java:57)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    @InjectMocks
+    private StatesServiceImpl statesService;
+
+    @Mock
+    private SubsidiaryServiceFeign subsidiaryServiceFeign;
+
+    @Mock
+    private InterestCalculationServiceImpl interestCalculationServiceImpl;
+
+    private GlobalReportRequest request;
+
+    @Before
+    public void setUp() {
+        request = new GlobalReportRequest();
+        request.setMonth(YearMonth.of(2024, 4));
+        request.setClientName("ClientA");
+
+        // Si getClientId est une méthode privée, utilise un spy :
+        statesService = Mockito.spy(statesService);
+        doReturn(1L).when(statesService).getClientId(any());
+    }
+
+    @Test
+    public void testGenerateArreteIntraGroupeReport() {
+        SubsidiaryDTO sub1 = new SubsidiaryDTO(1L, "Sub1");
+        List<SubsidiaryDTO> subsidiaries = new ArrayList<>();
+        subsidiaries.add(sub1);
+
+        when(subsidiaryServiceFeign.getSubsidiariesByClientId(1L)).thenReturn(subsidiaries);
+
+        InterestReport report = new InterestReport();
+        report.setCurrency("MAD");
+        report.setCalculationPeriod("01/04/2024 au 30/04/2024");
+        report.setGroupName("Group1");
+        report.setPivotAddress("Pivot Addr");
+        report.setPivotAccountNumber("ACC001");
+        report.setReportReference("REP-123");
+
+        AccountInterestDetails details = new AccountInterestDetails();
+        details.setAccountNumber("ACC1");
+        details.setAccountName("Account One");
+        details.setGrossCreditAmount(BigDecimal.valueOf(100));
+        details.setGrossDebitAmount(BigDecimal.valueOf(200));
+
+        Map<String, AccountInterestDetails> map = new HashMap<>();
+        map.put("ACC1", details);
+        report.setAccountDetails(map);
+
+        when(interestCalculationServiceImpl.calculateMonthlyInterestReport(eq(1L), eq(1L), any()))
+                .thenReturn(report);
+
+        ResponseEntity<?> response = statesService.generateArreteIntraGroupeReport(request);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertTrue(response.getBody() instanceof InputStreamResource);
+    }
+}
