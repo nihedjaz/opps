@@ -1,62 +1,67 @@
-@BeforeEach
-    void init() {
-        ReflectionTestUtils.setField(scheduler, "reportDirectory", "target");
-        ReflectionTestUtils.setField(scheduler, "pathPiecesJointes", "target/pieces_jointes");
-    }
+@Test
+void testGenerateLoanBorrowingReports_success() throws Exception {
+    // Arrange
+    ClientDTO client = new ClientDTO();
+    client.setSubsidiaries(List.of(new SubsidiaryDTO("TestSubsidiary")));
+    when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
 
-    @Test
-    void testGenerateLoanBorrowingReports_success() throws Exception {
-        // Setup mocks
-        ClientDTO client = new ClientDTO();
-        SubsidiaryDTO subsidiary = new SubsidiaryDTO();
-        subsidiary.setName("TestSubsidiary");
-        client.setSubsidiaries(List.of(subsidiary));
+    PPTStateCalculator.PositionReport report = new PPTStateCalculator.PositionReport();
+    report.setClientName("ClientX");
+    report.setSubsidiaryName("TestSubsidiary");
+    report.setReferenceDate(LocalDate.now());
+    report.setAddress("AddressX");
+    report.setStateReference("REF001");
+    report.setClientAccountNumber("123456");
+    report.setCurrency("EUR");
+    report.setPositions(List.of(new Object())); // simulate positions
+    report.setStateAttach(null);
 
-        when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
+    when(pptStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
+            .thenReturn(CompletableFuture.completedFuture(report));
 
-        PPTStateCalculator.PositionReport report = new PPTStateCalculator.PositionReport();
-        report.setPositions(List.of(new Object())); // remplacez par un bean réel si nécessaire
-        report.setClientName("TestClient");
-        report.setSubsidiaryName("TestSub");
-        report.setAddress("Some Address");
-        report.setStateReference("Ref001");
-        report.setClientAccountNumber("ACC123");
-        report.setReferenceDate(LocalDate.now());
-        report.setStateAttach("Attachment");
-        report.setCurrency("USD");
+    when(attachmentRepository.existsById(any())).thenReturn(false);
 
-        when(PPTStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
-                .thenReturn(CompletableFuture.completedFuture(report));
+    // Act
+    scheduler.generateLoanBorrowingReports();
 
-        when(attachmentRepository.existsById(any())).thenReturn(false);
-
-        // Lancer la méthode à tester
-        scheduler.generateLoanBorrowingReports();
-
-        // Vérifier qu'un fichier a été sauvegardé
-        verify(attachmentRepository).save(any());
-        verify(attachmentServiceImpl).save(any(), any(), eq(false));
-    }
-
-    @Test
-    void testGenerateLoanBorrowingReports_reportNull() throws Exception {
-        ClientDTO client = new ClientDTO();
-        SubsidiaryDTO subsidiary = new SubsidiaryDTO();
-        subsidiary.setName("EmptySubsidiary");
-        client.setSubsidiaries(List.of(subsidiary));
-
-        when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
-        when(PPTStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
-                .thenReturn(CompletableFuture.completedFuture(null));
-
-        scheduler.generateLoanBorrowingReports();
-
-        verifyNoInteractions(attachmentServiceImpl);
-    }
-
-    @Test
-    void testGenerateLoanBorrowingReports_withException() {
-        when(clientServiceFeign.getAllClients()).thenThrow(new RuntimeException("Test exception"));
-        assertDoesNotThrow(() -> scheduler.generateLoanBorrowingReports());
-    }
+    // Assert
+    verify(attachmentRepository, atLeastOnce()).save(any());
+    verify(attachmentServiceImpl, atLeastOnce()).save(any(), any(), eq(false));
 }
+@Test
+void testGenerateLoanBorrowingReports_emptyClientList() {
+    when(clientServiceFeign.getAllClients()).thenReturn(Collections.emptyList());
+    scheduler.generateLoanBorrowingReports();
+    verify(pptStateCalculator, never()).calculateLastNWorkingDayPositions(any(), any(), any());
+    verify(attachmentRepository, never()).save(any());
+}
+@Test
+void testGenerateLoanBorrowingReports_nullReport() throws Exception {
+    ClientDTO client = new ClientDTO();
+    client.setSubsidiaries(List.of(new SubsidiaryDTO("TestSubsidiary")));
+    when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
+
+    when(pptStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
+            .thenReturn(CompletableFuture.completedFuture(null));
+
+    scheduler.generateLoanBorrowingReports();
+
+    verify(attachmentRepository, never()).save(any());
+}
+
+@Test
+void testGenerateLoanBorrowingReports_withException() throws Exception {
+    ClientDTO client = new ClientDTO();
+    client.setSubsidiaries(List.of(new SubsidiaryDTO("TestSubsidiary")));
+    when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
+
+    when(pptStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
+            .thenThrow(new RuntimeException("Erreur simulateur"));
+
+    scheduler.generateLoanBorrowingReports();
+
+    // Pas d’exception propagée, elle est catchée
+    verify(attachmentRepository, never()).save(any());
+}
+
+
