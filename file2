@@ -1,60 +1,62 @@
-@RunWith(MockitoJUnitRunner.class)
-class StatesServiceImplTest {
-
-    @InjectMocks
-    private StatesServiceImpl statesService;
-
-    @Mock
-    private SubsidiaryServiceFeign subsidiaryServiceFeign;
-
-    @Mock
-    private InterestCalculationServiceImpl interestCalculationServiceImpl;
-
-    private GlobalReportRequest request;
-
-    @Before
-    public void setUp() {
-        request = new GlobalReportRequest();
-        request.setMonth(YearMonth.of(2024, 4));
-        request.setClientName("ClientA");
-
-        // Si getClientId est une méthode privée, utilise un spy :
-        statesService = Mockito.spy(statesService);
-        doReturn(1L).when(statesService).getClientId(any());
+@BeforeEach
+    void init() {
+        ReflectionTestUtils.setField(scheduler, "reportDirectory", "target");
+        ReflectionTestUtils.setField(scheduler, "pathPiecesJointes", "target/pieces_jointes");
     }
 
     @Test
-    public void testGenerateArreteIntraGroupeReport() {
-        SubsidiaryDTO sub1 = new SubsidiaryDTO(1L, "Sub1");
-        List<SubsidiaryDTO> subsidiaries = new ArrayList<>();
-        subsidiaries.add(sub1);
+    void testGenerateLoanBorrowingReports_success() throws Exception {
+        // Setup mocks
+        ClientDTO client = new ClientDTO();
+        SubsidiaryDTO subsidiary = new SubsidiaryDTO();
+        subsidiary.setName("TestSubsidiary");
+        client.setSubsidiaries(List.of(subsidiary));
 
-        when(subsidiaryServiceFeign.getSubsidiariesByClientId(1L)).thenReturn(subsidiaries);
+        when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
 
-        InterestReport report = new InterestReport();
-        report.setCurrency("MAD");
-        report.setCalculationPeriod("01/04/2024 au 30/04/2024");
-        report.setGroupName("Group1");
-        report.setPivotAddress("Pivot Addr");
-        report.setPivotAccountNumber("ACC001");
-        report.setReportReference("REP-123");
+        PPTStateCalculator.PositionReport report = new PPTStateCalculator.PositionReport();
+        report.setPositions(List.of(new Object())); // remplacez par un bean réel si nécessaire
+        report.setClientName("TestClient");
+        report.setSubsidiaryName("TestSub");
+        report.setAddress("Some Address");
+        report.setStateReference("Ref001");
+        report.setClientAccountNumber("ACC123");
+        report.setReferenceDate(LocalDate.now());
+        report.setStateAttach("Attachment");
+        report.setCurrency("USD");
 
-        AccountInterestDetails details = new AccountInterestDetails();
-        details.setAccountNumber("ACC1");
-        details.setAccountName("Account One");
-        details.setGrossCreditAmount(BigDecimal.valueOf(100));
-        details.setGrossDebitAmount(BigDecimal.valueOf(200));
+        when(PPTStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
+                .thenReturn(CompletableFuture.completedFuture(report));
 
-        Map<String, AccountInterestDetails> map = new HashMap<>();
-        map.put("ACC1", details);
-        report.setAccountDetails(map);
+        when(attachmentRepository.existsById(any())).thenReturn(false);
 
-        when(interestCalculationServiceImpl.calculateMonthlyInterestReport(eq(1L), eq(1L), any()))
-                .thenReturn(report);
+        // Lancer la méthode à tester
+        scheduler.generateLoanBorrowingReports();
 
-        ResponseEntity<?> response = statesService.generateArreteIntraGroupeReport(request);
+        // Vérifier qu'un fichier a été sauvegardé
+        verify(attachmentRepository).save(any());
+        verify(attachmentServiceImpl).save(any(), any(), eq(false));
+    }
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertTrue(response.getBody() instanceof InputStreamResource);
+    @Test
+    void testGenerateLoanBorrowingReports_reportNull() throws Exception {
+        ClientDTO client = new ClientDTO();
+        SubsidiaryDTO subsidiary = new SubsidiaryDTO();
+        subsidiary.setName("EmptySubsidiary");
+        client.setSubsidiaries(List.of(subsidiary));
+
+        when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
+        when(PPTStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
+                .thenReturn(CompletableFuture.completedFuture(null));
+
+        scheduler.generateLoanBorrowingReports();
+
+        verifyNoInteractions(attachmentServiceImpl);
+    }
+
+    @Test
+    void testGenerateLoanBorrowingReports_withException() {
+        when(clientServiceFeign.getAllClients()).thenThrow(new RuntimeException("Test exception"));
+        assertDoesNotThrow(() -> scheduler.generateLoanBorrowingReports());
     }
 }
