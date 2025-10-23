@@ -1,67 +1,92 @@
-@Test
-void testGenerateLoanBorrowingReports_success() throws Exception {
-    // Arrange
-    ClientDTO client = new ClientDTO();
-    client.setSubsidiaries(List.of(new SubsidiaryDTO("TestSubsidiary")));
-    when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
-
-    PPTStateCalculator.PositionReport report = new PPTStateCalculator.PositionReport();
-    report.setClientName("ClientX");
-    report.setSubsidiaryName("TestSubsidiary");
-    report.setReferenceDate(LocalDate.now());
-    report.setAddress("AddressX");
-    report.setStateReference("REF001");
-    report.setClientAccountNumber("123456");
-    report.setCurrency("EUR");
-    report.setPositions(List.of(new Object())); // simulate positions
-    report.setStateAttach(null);
-
-    when(pptStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
-            .thenReturn(CompletableFuture.completedFuture(report));
-
-    when(attachmentRepository.existsById(any())).thenReturn(false);
-
-    // Act
-    scheduler.generateLoanBorrowingReports();
-
-    // Assert
-    verify(attachmentRepository, atLeastOnce()).save(any());
-    verify(attachmentServiceImpl, atLeastOnce()).save(any(), any(), eq(false));
-}
-@Test
-void testGenerateLoanBorrowingReports_emptyClientList() {
-    when(clientServiceFeign.getAllClients()).thenReturn(Collections.emptyList());
-    scheduler.generateLoanBorrowingReports();
-    verify(pptStateCalculator, never()).calculateLastNWorkingDayPositions(any(), any(), any());
-    verify(attachmentRepository, never()).save(any());
-}
-@Test
-void testGenerateLoanBorrowingReports_nullReport() throws Exception {
-    ClientDTO client = new ClientDTO();
-    client.setSubsidiaries(List.of(new SubsidiaryDTO("TestSubsidiary")));
-    when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
-
-    when(pptStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
-            .thenReturn(CompletableFuture.completedFuture(null));
-
-    scheduler.generateLoanBorrowingReports();
-
-    verify(attachmentRepository, never()).save(any());
-}
-
-@Test
-void testGenerateLoanBorrowingReports_withException() throws Exception {
-    ClientDTO client = new ClientDTO();
-    client.setSubsidiaries(List.of(new SubsidiaryDTO("TestSubsidiary")));
-    when(clientServiceFeign.getAllClients()).thenReturn(List.of(client));
-
-    when(pptStateCalculator.calculateLastNWorkingDayPositions(any(), any(), any()))
-            .thenThrow(new RuntimeException("Erreur simulateur"));
-
-    scheduler.generateLoanBorrowingReports();
-
-    // Pas d’exception propagée, elle est catchée
-    verify(attachmentRepository, never()).save(any());
-}
+je te donne dautres detaillée merci de donne discription detaille de projet : Création de rôles: En tant qu'administrateur, Je veux être le seul à pouvoir créer ou modifier les rôles et affecter des droits aux utilisateurs Afin de garder un contrôle strict sur les habilitations Affectation de PCRU aux utilisateurs: En tant qu'administrateur, Je veux être le seul à pouvoir affecter un PCRU (Fililaes) aux utilisateurs Afin de garantir un contrôle strict sur les résponsabilités liés aux tiers Créations de profils utilisateurs: En tant qu'administrateur Je veux pouvoir créer des profils utilisateurs Afin de pouvoir les affecter aux utilisateurs créés sur RCT Affectations des profils aux utilisateurs RCT: En tant qu'administrateur je veux pouvoir affecter un ou plusieurs profils à un utilisateur (saisisseur, valideur, super user, consultation …) afin de refléter les responsabilités métier Connexion sécurisée des personnes habilitées: En tant que personne habilitée, je veux pouvoir me connecter à l'application uniquement si je suis dans le groupe de sécurité dédié afin de garantir un accés sécurisé et maitrisé Vérification de l'existence d'un tiers dans RCT: En tant que que membre de l'equipe immatriculation PCRU Je veux lancer une recherche dans le référentiel RCT avec raison sociale ou du code client local par filiale Afin de vérifier si le tiers existe déjà Résultat de vérification de l'existence d'un tiers dans RCT: En tant que membre de l'équipe immatriculation PCRU je veux obtenir un résultat clair indiquant si le tiers existe ou n'existe pas afin de savoir si je peux poursuivre ou non la création
+attend je vous envie le reste Consultation du détail d'un tiers existant En tant que membre de l'équipe immatriculation PCRU Je veux consulter le détail du tiers déjà existant Afin de m'assurer qu'il ne s'agit pas d'un doublon Saisie manuelle pour les tiers hors Maroc: En tant que membre de l'équipe immatriculation PCRU Je veux pouvoir saisir manuellement les données d'un tiers si celui-ci est situé hors Maroc Afin de pourvoir l'immatriculer même s'il n'est pas couvert par OMPIC Création manuelle d'un tiers sans correspondance dans RTC ni OMPIC: En tant que membre de l'équipe immatriculation PCRU Je veux pouvoir créer manuellement un tiers dans le RCT si aucune correspondance n'a été trouvée ni dans RCT ni dans OMPIC ou si le tiers est hors Maroc Afin d'assurer l'immatriculation même en l'absence d'informations préexistantes Soumission de demande de modification par un non PCRU du tiers En tant que utilisateur non PCRU Je veux pouvoir soumettre une demande de modification des données d'un tiers Afin que le PCRU puisse la valider ou la rejetter Recherche d'un tiers dans le réferentiel: En tant que utilisateur PCRU ou non PCRU Je veux pouvoir effectuer une recherche d'un tiers via différents critéres(raison sociale, identifiant, numéro de client local ...) Afin de localiser la fiche que je souhaite consulter Consulter une fiche détaillée d'un tiers de tous les champs disponibles En tant que utilisateur PCRU et non PCRU Je veux visualiser la fiche d'un tiers dans un format structuré Afin d'accéder aux données clés du tiers Validation ou rejet d'une demande de modification par un membre PCRU En tant que valideur PCRU Je veux pouvoir valider ou rejeter une demande de modification d'un tiers appartenant à mon PCRU, soumise par d'autres PCRU Afin de garder l'intégralité des informations des tiers dont je suis responsable Géneration d'une piste d'audit En tant que systéme Je veux enresgistrer toutes les étapes de modification et validation de données Afin d'assurer une traçabilité compléte et auditable (lot 2) Attribution automatique du PCRU lors de la création du tiers : En tant que utilisateur ayant le droit de saisie Je veux que le champs PCRU du tiers que je crée soit automatiquement rempli à partir de mon PCRU Afin de ne pas avoir à le saisir manuellement lors de l'immatriculation Demande de transfert de tiers: En tant que membre d'une entité PCRU Je veux pouvoir initier une demande de transfert de PCRU à un autre PCRU Afin de faire évoluer la responsabilité d'un tiers en fonction de nouveaux engagements Historisation ds modifications de données : En tant que Systéme Je veux enregistrer toutes les modifications effectués sur les champs d'un tiers Afin de garder une traçabilité compléte que l'utilisateur soit PCRU ou non PCRU Ajout de relation CBS à un tiers existant: En tant que membre de l’équipe PCRU ou non-PCRU, je veux pouvoir ajouter une relation CBS à un tiers existant dans le RCT, afin de harmoniser les données entre RCT et CBS. Création de groupes et sous-groupes de tiers: En tant que membre de l’équipe PCRU, je veux pouvoir créer manuellement un groupe et ses sous-groupes dans le RCT, afin de structurer les entités économiques selon leur organisation hiérarchique.(· La pyramide organisationnelle (maison mère et filiales) doit être validée au préalable. · Le système permet de créer un groupe avec ou sans sous-groupes. · Les champs ID_GRP et ID_SS_GROUPE sont obligatoires, uniques, et générés automatiquement. · La hiérarchie doit être cohérente (ex. pas de sous-groupe sans groupe parent). · Les filiales héritent automatiquement : . du PCRU du groupe, . du flag prudentiel. . La structure permet de rattacher plusieurs tiers RCT à un même groupe. . Chaque groupe doit obligatoirement être rattaché à une maison mère (tiers portant la relation) . Obligation de renseigner une maison mére lors de la création d'un groupe . Obligation de renseigner un leader lors de la création d'un sous-groupe . Le système attribue automatiquement au groupe créé un code groupe unique, sous la forme d’une lettre suivie de six chiffres (ex. : G999999), ces chiffres variant pour chaque enregistrement. . Le système attribue automatiquement au sous-groupe créé un code sous-groupe unique, sous la forme d’une lettre suivie de six chiffres (ex. : S999999), ces chiffres variant pour chaque enregistrement.) Rattachement ou détachement d’un tiers à un groupe: En tant que membre de l’équipe PCRU, je veux pouvoir rattacher ou détacher un tiers à un groupe ou sous-groupe dans le RCT, afin de refléter correctement l’organisation et les changements structurels. Proposition de désactivation d’un tiers inactif En tant que système Je veux détecter les tiers dont toutes les relations sont inactives et les proposer à la désactivation auprès du PCRU, afin de maintenir un référentiel à jour et cohérent. Réactivation automatique d'un tiers En tant qu'utilisateur habilité Je veux que le systéme réactive automatiquement un tiers inactif dés que je saisi une nouvelle relation valide(avec code CBS), Afin de le rendre immédiatement actif sans validation manuelle Menu demandes: En tant qu'utilisateur RCT, je veux pouvoir accéder à un menu "Demandes en cours" afin de consulter l'ensemble des demandes, tous types confondus, identifier celles dont je suis responsable, et les valider ou les rejeter directement depuis cette interface Inaccessibilité à la modification d’une fiche tiers en validation: En tant qu'utilisateur RCT Je veux que la fiche d'un tiers sur laquelle j'avais effectué des modifications en cours d validation, soit verrouillée en mode consultation, Afin d'éviter les conflits entre plusieurs demandes simultanées. Menu audit : En tant qu'utilisateur RCT habilité Je veux pouvoir les enregistrements bruts au niveau du menu audit Afin de consulter l'historique détaillé des actions réalisées et d’assurer la traçabilité des opérations effectuées.Identifiants externes: En tant qu’utilisateur RCT je veux avoir un onglet dédié aux identifiants externes au niveau de la fiche tiers afin de gérer efficacement les références externes associées à chaque tiers.(• L’utilisateur peut accéder à l’onglet Identifiants Externes depuis la fiche d’un tiers. • Les identifiants sont affichés dans un tableau avec les colonnes suivantes : ○ Type d’identifiant ○ Valeur ○ Date de création ○ Statut (Actif / Inactif) ○ Date de fin de relation ○ Désactiver: pour désactiver l'identifiant externe • L’utilisateur peut créer un nouvel identifiant externe en renseignant : ○ Le type d’identifiant (valeurs possibles : RC/ICE/IF/CNSS/SWIFT) ○ La valeur (champ libre de 24 caractères) ○ La date de création (date système par défaut et modifiable au besoin) • Un bouton "Add" permet de valider l'ajout de l’identifiant. • L’utilisateur peut aussi: ○ Réinitialiser les champs via le bouton "Clear". ○ Supprimer un identifiant via le bouton dédié sur le tableau, la suppression comme toute autre modification du tiers est soumise à validation, si l'utilisateur n'est pas PCRU, une fois validée le statut passe à 'Inactif' avec une date de fin renseignée. • Un identifiant avec le statut "Actif" ne doit pas avoir de date de fin de relation. • Un identifiant avec le statut "Inactif" doit obligatoirement avoir une date de fin de relation renseignée. Un bouton "Valider" sous les quatre onglets permet d’enregistrer toutes les modifications apportés au tiers.)Gestion de relations locales: En tant qu’utilisateur RCT je veux avoir un onglet dédié à la désactivation des relations locales au niveau de la fiche tiers afin de gérer les relations locales entre tiers et filiales Création de groupes et sous-groupes de tiers: En tant que membre de l’équipe PCRU, je veux pouvoir créer manuellement un groupe et ses sous-groupes dans le RCT, afin de structurer les entités économiques selon leur organisation hiérarchique.(• Seul le PCRU peut : ○ Créer un groupe ou sous-groupe relevant de son entité. ○ Modifier les attributs d’un groupe ou sous-groupe qu’il a créé. ○ Rattacher un tiers à son propre groupe ou sous-groupe. ○ Détacher un tiers de son propre groupe ou sous-groupe. • Une fenêtre pop-up permet d’afficher la liste des tiers disponibles, avec une fonction de recherche intégrée. • Un utilisateur peut rattacher un tiers à son groupe sans validation préalable du PCRU maître du tiers. • Cette action déclenche un workflow automatique : ○ Le PCRU du tiers est mis à jour automatiquement pour correspondre à celui du groupe auquel il est rattaché (Héritage). • Lorsqu’un tiers est rattaché à un groupe, il hérite automatiquement du PCRU de ce groupe. Il n’est pas nécessaire d'avoir la validation du PCRU du tiers (récupération de tiers) lors de l’ajout d’un tiers différent à un groupe/sous-groupe. . Après rattachement du tiers au groupe  et mise à jour de son PCRU, le message suivant s’affiche : "L’attachement a été effectué avec succès : ce tiers est désormais rattaché au PCRU de ce groupe.") donne moi une déscription global pour ce projet est desciprtion detaillée
 
 
+****************************
+Parfait 👍 tu m’as partagé un ensemble très riche de user stories qui couvrent la gestion des habilitations, la création et la gestion des tiers, la traçabilité et la gouvernance des données dans le projet RCT (Référentiel Central des Tiers). Voici une synthèse globale puis une description détaillée du projet, structurée pour être utilisable dans un dossier projet ou une présentation.
+
+🏦 Description globale du projet RCT (Banking)
+Le projet RCT (Référentiel Central des Tiers) vise à mettre en place une plateforme centralisée et sécurisée permettant de gérer l’ensemble des tiers (clients, prospects, partenaires, contreparties, fournisseurs, etc.) de manière unifiée, fiable et conforme aux exigences réglementaires.
+
+Il s’agit d’un socle stratégique pour la banque, garantissant :
+
+Une vision 360° des tiers (internes et externes).
+
+Une gouvernance stricte des habilitations (rôles, profils, PCRU).
+
+Une traçabilité complète des opérations (audit, historisation, piste de contrôle).
+
+Une interopérabilité avec les systèmes externes (OMPIC, CBS, identifiants réglementaires).
+
+Une sécurité renforcée des accès et des données.
+
+En résumé, le RCT permet de fiabiliser les données tiers, d’éviter les doublons, de réduire les risques réglementaires et d’optimiser les processus métiers liés à la gestion des clients et partenaires.
+
+📋 Description détaillée du projet
+1. Gouvernance et habilitations
+Création et gestion des rôles : seuls les administrateurs peuvent créer/modifier des rôles et affecter des droits.
+
+Gestion des profils utilisateurs : création de profils (saisisseur, valideur, super-user, consultation…) et affectation à des utilisateurs.
+
+Affectation PCRU : chaque utilisateur est rattaché à un PCRU (filiale), garantissant un contrôle strict des responsabilités.
+
+Connexion sécurisée : accès réservé aux personnes habilitées via des groupes de sécurité.
+
+2. Gestion des tiers
+Recherche et vérification : possibilité de rechercher un tiers par raison sociale, identifiant, code client local, etc.
+
+Consultation : accès aux fiches détaillées des tiers pour éviter les doublons.
+
+Création manuelle :
+
+Pour les tiers hors Maroc (non couverts par OMPIC).
+
+Pour les tiers sans correspondance dans RCT ni OMPIC.
+
+Modification :
+
+Les utilisateurs non-PCRU peuvent soumettre des demandes de modification.
+
+Les PCRU valident ou rejettent ces demandes.
+
+Relations CBS : ajout de relations CBS pour harmoniser les données entre RCT et CBS.
+
+Identifiants externes : gestion des références réglementaires (RC, ICE, IF, CNSS, SWIFT).
+
+3. Organisation et structuration
+Groupes et sous-groupes : création de structures hiérarchiques (maison mère, filiales, sous-groupes).
+
+Rattachement/détachement : gestion dynamique des liens entre tiers et groupes.
+
+Héritage automatique : les filiales héritent du PCRU et du flag prudentiel du groupe.
+
+4. Traçabilité et conformité
+Piste d’audit : enregistrement de toutes les étapes de modification et validation.
+
+Historisation : conservation de toutes les versions des données.
+
+Menu audit : consultation des enregistrements bruts pour assurer la traçabilité.
+
+Menu demandes : suivi des demandes en cours (création, modification, transfert).
+
+Verrouillage des fiches : impossibilité de modifier une fiche en cours de validation.
+
+5. Cycle de vie des tiers
+Désactivation automatique : détection des tiers inactifs et proposition de désactivation.
+
+Réactivation automatique : un tiers inactif est réactivé dès qu’une nouvelle relation valide est saisie.
+
+Transfert de tiers : possibilité de transférer la responsabilité d’un tiers d’un PCRU à un autre.
+
+✅ Résultats attendus
+Qualité et fiabilité des données : élimination des doublons et incohérences.
+
+Sécurité et conformité : respect des normes KYC, LCB-FT, RGPD.
+
+Efficacité opérationnelle : réduction des délais de traitement et meilleure coordination entre entités.
+
+Vision consolidée : meilleure connaissance client et pilotage stratégique.
+
+👉 En résumé : Le projet RCT est une brique centrale du système d’information bancaire, garantissant la maîtrise des données tiers, la sécurité des habilitations, et la conformité réglementaire, tout en offrant une flexibilité opérationnelle pour accompagner la croissance et la transformation digitale de la banque.
+
+Veux-tu que je transforme cette description en fiche projet formelle (avec objectifs, périmètre, livrables, acteurs, planning), ou en présentation PowerPoint synthétique prête à être utilisée devant une direction ?
